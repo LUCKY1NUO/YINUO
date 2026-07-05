@@ -1,4 +1,5 @@
-const defineConfig = (config) => config;
+import { defineConfig } from 'vite';
+import legacy from '@vitejs/plugin-legacy';
 
 const removeCrossorigin = () => ({
   name: 'remove-crossorigin-attrs',
@@ -9,7 +10,13 @@ const removeCrossorigin = () => ({
 });
 
 export default defineConfig({
-  plugins: [removeCrossorigin()],
+  plugins: [
+    legacy({
+      targets: ['iOS >= 12', 'Safari >= 12'],
+      modernPolyfills: true,
+    }),
+    removeCrossorigin(),
+  ],
   build: {
     modulePreload: false,
   },
