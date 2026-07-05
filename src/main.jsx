@@ -11,11 +11,13 @@ import {
   ChevronRight,
   Cuboid,
   Mail,
+  Menu,
   MapPin,
   Palette,
   Phone,
   Sparkles,
   WandSparkles,
+  X,
 } from 'lucide-react';
 import './styles.css';
 
@@ -572,6 +574,7 @@ function MotionSystem() {
 
 function SiteNav() {
   const [isNavFloating, setIsNavFloating] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -588,21 +591,43 @@ function SiteNav() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1024) setIsMenuOpen(false);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
-    <header className={`nav${isNavFloating ? ' is-floating' : ''}`}>
-      <a className="brand cursor-target" href="#home" aria-label="回到首页">
+    <header className={`nav${isNavFloating ? ' is-floating' : ''}${isMenuOpen ? ' is-open' : ''}`}>
+      <a className="brand cursor-target" href="#home" aria-label="回到首页" onClick={closeMenu}>
         <span>Yinuo Wang</span>
       </a>
-      <nav className="nav-links" aria-label="页面导航">
-        <a className="cursor-target" href="#about">关于</a>
-        <a className="cursor-target" href="#projects">项目</a>
-        <a className="cursor-target" href="#strengths">优势</a>
-        <a className="cursor-target" href="#contact">联系</a>
-      </nav>
-      <a className="nav-contact cursor-target" href={`mailto:${contacts.email}`}>
-        <Mail size={18} />
-        联系我
-      </a>
+      <button
+        className="nav-toggle cursor-target"
+        type="button"
+        aria-label={isMenuOpen ? '收起导航菜单' : '展开导航菜单'}
+        aria-expanded={isMenuOpen}
+        onClick={() => setIsMenuOpen((open) => !open)}
+      >
+        {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+      </button>
+      <div className="nav-menu">
+        <nav className="nav-links" aria-label="页面导航">
+          <a className="cursor-target" href="#about" onClick={closeMenu}>关于</a>
+          <a className="cursor-target" href="#projects" onClick={closeMenu}>项目</a>
+          <a className="cursor-target" href="#strengths" onClick={closeMenu}>优势</a>
+          <a className="cursor-target" href="#contact" onClick={closeMenu}>联系</a>
+        </nav>
+        <a className="nav-contact cursor-target" href={`mailto:${contacts.email}`} onClick={closeMenu}>
+          <Mail size={18} />
+          联系我
+        </a>
+      </div>
     </header>
   );
 }
