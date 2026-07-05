@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>其他项目 | Yinuo Wang Portfolio</title>
+  <style>
+:root {
+  --color-bg: #3f3f44;
+  --color-surface: rgba(63, 63, 68, 0.6);
+  --color-text-primary: #feeee1;
+  --color-text-secondary: rgba(254, 238, 225, 0.7);
+  --color-accent-pink: #ffb2b9;
+  --color-accent-blue: #2ca9e1;
+  --color-border: rgba(255, 178, 185, 0.15);
+  --color-bg-rgb: 63, 63, 68;
+  --color-text-primary-rgb: 254, 238, 225;
+  --color-accent-pink-rgb: 255, 178, 185;
+  --color-accent-blue-rgb: 44, 169, 225;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.op-page {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 84% 16%, rgba(var(--color-accent-blue-rgb), 0.18), transparent 30rem),
+    radial-gradient(circle at 10% 42%, rgba(var(--color-accent-pink-rgb), 0.2), transparent 32rem),
+    var(--color-bg);
+}
+
+.op-nav {
+  position: fixed;
+  left: 50%;
+  top: 26px;
+  z-index: 20;
+  width: min(1700px, calc(100% - 96px));
+  min-height: 62px;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: rgba(var(--color-bg-rgb), 0.58);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  transform: translateX(-50%) translateY(24px);
+  transition:
+    opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.op-nav span {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.op-back,
+.op-top-link {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border-radius: 999px;
+  color: var(--color-bg);
+  background: linear-gradient(135deg, var(--color-accent-pink), var(--color-accent-blue));
+  font-weight: 900;
+  transition:
+    color 0.28s ease,
+    background 0.28s ease,
+    transform 0.28s ease;
+}
+
+.op-back:hover,
+.op-top-link:hover {
+  color: var(--color-text-primary);
+  background: rgba(var(--color-text-primary-rgb), 0.12);
+  transform: translateY(-2px);
+}
+
+.op-wrap {
+  width: min(1700px, calc(100% - 96px));
+  margin: 0 auto;
+}
+
+.op-hero {
+  min-height: 100vh;
+  padding: 132px 0 78px;
+  display: grid;
+  align-items: end;
+}
+
+.op-heading {
+  margin-bottom: 42px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.74fr) minmax(420px, 0.46fr);
+  gap: 60px;
+  align-items: end;
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.op-kicker {
+  margin: 0 0 18px;
+  color: var(--color-accent-pink);
+  font-size: 14px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.op-heading h1,
+.op-project-title h2 {
+  margin: 0;
+  color: transparent;
+  background: linear-gradient(135deg, var(--color-accent-pink), var(--color-accent-blue));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0;
+}
+
+.op-heading h1 {
+  font-size: clamp(78px, 7.2vw, 140px);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.op-heading p:last-child {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 19px;
+  line-height: 1.75;
+}
+
+.op-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.op-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 540px;
+  display: flex;
+  align-items: flex-end;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  box-shadow: 0 24px 70px rgba(var(--color-bg-rgb), 0.22);
+  opacity: 0;
+  transform: translate3d(0, 38px, 0);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.op-page.is-ready .op-nav {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.op-page.is-ready .op-heading,
+.op-page.is-ready .op-card {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.op-page.is-ready .op-heading {
+  transition-delay: 0.08s;
+}
+
+.op-page.is-ready .op-card:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.op-page.is-ready .op-card:nth-child(2) {
+  transition-delay: 0.32s;
+}
+
+.op-page.is-ready .op-card:nth-child(3) {
+  transition-delay: 0.44s;
+}
+
+.op-page.is-ready .op-card:nth-child(4) {
+  transition-delay: 0.56s;
+}
+
+.op-card img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+}
+
+.op-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(var(--color-bg-rgb), 0.08), rgba(var(--color-bg-rgb), 0.78));
+  transition: background 0.35s ease;
+}
+
+.op-card-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 188px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 13px;
+}
+
+.op-card-content span {
+  width: max-content;
+  max-width: 100%;
+  padding: 8px 11px;
+  border-radius: 999px;
+  color: var(--color-bg);
+  background: var(--color-accent-pink);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.op-card-content h2 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 30px;
+  line-height: 1.08;
+}
+
+.op-card-content p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.op-card:hover img {
+  filter: saturate(1.06) contrast(1.04);
+  transform: scale(1.12);
+}
+
+.op-card:hover::after {
+  background: linear-gradient(180deg, rgba(var(--color-accent-blue-rgb), 0.12), rgba(var(--color-bg-rgb), 0.86));
+}
+
+.op-card:hover .op-card-content span {
+  color: var(--color-bg);
+  background: var(--color-accent-blue);
+}
+
+.op-project {
+  position: relative;
+  padding: 120px 0;
+  color: var(--color-bg);
+  background-color: var(--color-text-primary);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(var(--color-accent-blue-rgb), 0.06), transparent 28rem),
+    linear-gradient(180deg, rgba(var(--color-text-primary-rgb), 0.96) 0%, rgba(var(--color-accent-pink-rgb), 0.28) 100%);
+}
+
+.op-project:nth-of-type(odd) {
+  background-image:
+    radial-gradient(circle at 88% 10%, rgba(var(--color-accent-blue-rgb), 0.08), transparent 28rem),
+    linear-gradient(180deg, rgba(var(--color-text-primary-rgb), 0.94) 0%, rgba(var(--color-accent-pink-rgb), 0.38) 100%);
+}
+
+.op-project::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(1700px, calc(100% - 96px));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, transparent, var(--color-accent-pink), var(--color-accent-blue), transparent);
+}
+
+.op-project-title {
+  margin-bottom: 42px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(320px, 0.38fr);
+  gap: 48px;
+  align-items: end;
+}
+
+.op-project-title h2 {
+  font-size: clamp(54px, 5vw, 96px);
+  line-height: 0.98;
+}
+
+.op-project-title p {
+  margin: 0;
+  color: rgba(var(--color-bg-rgb), 0.72);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.op-gallery {
+  display: grid;
+  gap: 42px;
+}
+
+.op-shot {
+  overflow: hidden;
+  border: 1px solid rgba(var(--color-accent-pink-rgb), 0.2);
+  border-radius: 8px;
+  background: rgba(var(--color-text-primary-rgb), 0.72);
+  box-shadow: 0 18px 52px rgba(var(--color-bg-rgb), 0.08);
+  opacity: 0;
+  transform: translateY(44px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.op-shot.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.op-shot img {
+  height: auto;
+}
+
+.op-footer {
+  min-height: 62vh;
+  padding: 110px 0;
+  display: grid;
+  align-items: center;
+  background:
+    radial-gradient(circle at 78% 20%, rgba(var(--color-accent-pink-rgb), 0.28), transparent 30rem),
+    var(--color-bg);
+}
+
+.op-footer h2 {
+  max-width: 1080px;
+  margin: 0;
+  color: transparent;
+  background: linear-gradient(135deg, var(--color-accent-pink), var(--color-accent-blue));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(56px, 5.8vw, 112px);
+  line-height: 0.98;
+}
+
+.op-footer-actions {
+  margin-top: 38px;
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 1180px) {
+  body {
+    min-width: 1100px;
+  }
+}
+</style>
+</head>
+<body>
+  <main class="op-page">
+    <header class="op-nav">
+      <span>YINUO WANG / OTHER PROJECTS</span>
+      <a class="op-back" href="index.html?target=projects#projects">返回作品集</a>
+    </header>
+
+    <section class="op-hero" id="top">
+      <div class="op-wrap">
+        <div class="op-heading">
+          <div>
+            <p class="op-kicker">Other Selected Works</p>
+            <h1>OTHER<br />PROJECTS</h1>
+          </div>
+          <p>四个补充项目按类别并列展示。点击任一项目进入对应图片长卷浏览，滚动时图片以克制的淡入淡出节奏出现。</p>
+        </div>
+        <div class="op-card-grid">
+
+          <a class="op-card" href="#coffee-brand">
+            <img src="assets/other-projects/coffee-brand/cover.webp" alt="咖啡品牌设计封面" loading="eager" />
+            <div class="op-card-content">
+              <span>Brand Identity</span>
+              <h2>咖啡品牌设计</h2>
+              <p>咖啡品牌视觉识别、门店物料与包装延展。 / 9 张</p>
+            </div>
+          </a>
+          <a class="op-card" href="#aigc-design">
+            <img src="assets/other-projects/aigc-design/cover.webp" alt="AIGC设计封面" loading="eager" />
+            <div class="op-card-content">
+              <span>AI Visual</span>
+              <h2>AIGC设计</h2>
+              <p>IP形象、场景风格与AIGC辅助视觉提案。 / 4 张</p>
+            </div>
+          </a>
+          <a class="op-card" href="#motion-work">
+            <img src="assets/other-projects/motion-work/01.webp" alt="动画作品封面" loading="eager" />
+            <div class="op-card-content">
+              <span>Motion Design</span>
+              <h2>动画作品</h2>
+              <p>毕业动画项目视觉设定、分镜与场景展示。 / 6 张</p>
+            </div>
+          </a>
+          <a class="op-card" href="#packaging-illustration">
+            <img src="assets/other-projects/packaging-illustration/01.webp" alt="包装插画设计封面" loading="eager" />
+            <div class="op-card-content">
+              <span>Packaging Illustration</span>
+              <h2>包装插画设计</h2>
+              <p>农产品包装插画、视觉延展与应用展示。 / 6 张</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="op-project" id="coffee-brand">
+      <div class="op-wrap">
+        <div class="op-project-title">
+          <div>
+            <p class="op-kicker">01 / Brand Identity</p>
+            <h2>咖啡品牌设计</h2>
+          </div>
+          <p>咖啡品牌视觉识别、门店物料与包装延展。 图片按原作品集顺序纵向排列，滚动进入视口时淡入显示。</p>
+        </div>
+        <div class="op-gallery">
+          <figure class="op-shot"><img src="assets/other-projects/coffee-brand/01.webp" alt="咖啡品牌设计作品图 01" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/coffee-brand/02.webp" alt="咖啡品牌设计作品图 02" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/coffee-brand/03.webp" alt="咖啡品牌设计作品图 03" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/coffee-brand/04.webp" alt="咖啡品牌设计作品图 04" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/coffee-brand/05.webp" alt="咖啡品牌设计作品图 05" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/coffee-brand/06.webp" alt="咖啡品牌设计作品图 06" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/coffee-brand/07.webp" alt="咖啡品牌设计作品图 07" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/coffee-brand/08.webp" alt="咖啡品牌设计作品图 08" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/coffee-brand/09.webp" alt="咖啡品牌设计作品图 09" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+    <section class="op-project" id="aigc-design">
+      <div class="op-wrap">
+        <div class="op-project-title">
+          <div>
+            <p class="op-kicker">02 / AI Visual</p>
+            <h2>AIGC设计</h2>
+          </div>
+          <p>IP形象、场景风格与AIGC辅助视觉提案。 图片按原作品集顺序纵向排列，滚动进入视口时淡入显示。</p>
+        </div>
+        <div class="op-gallery">
+          <figure class="op-shot"><img src="assets/other-projects/aigc-design/01.webp" alt="AIGC设计作品图 01" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/aigc-design/02.webp" alt="AIGC设计作品图 02" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/aigc-design/03.webp" alt="AIGC设计作品图 03" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/aigc-design/04.webp" alt="AIGC设计作品图 04" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+    <section class="op-project" id="motion-work">
+      <div class="op-wrap">
+        <div class="op-project-title">
+          <div>
+            <p class="op-kicker">03 / Motion Design</p>
+            <h2>动画作品</h2>
+          </div>
+          <p>毕业动画项目视觉设定、分镜与场景展示。 图片按原作品集顺序纵向排列，滚动进入视口时淡入显示。</p>
+        </div>
+        <div class="op-gallery">
+          <figure class="op-shot"><img src="assets/other-projects/motion-work/01.webp" alt="动画作品作品图 01" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/motion-work/02.webp" alt="动画作品作品图 02" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/motion-work/03.webp" alt="动画作品作品图 03" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/motion-work/04.webp" alt="动画作品作品图 04" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/motion-work/05.webp" alt="动画作品作品图 05" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/motion-work/06.webp" alt="动画作品作品图 06" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+    <section class="op-project" id="packaging-illustration">
+      <div class="op-wrap">
+        <div class="op-project-title">
+          <div>
+            <p class="op-kicker">04 / Packaging Illustration</p>
+            <h2>包装插画设计</h2>
+          </div>
+          <p>农产品包装插画、视觉延展与应用展示。 图片按原作品集顺序纵向排列，滚动进入视口时淡入显示。</p>
+        </div>
+        <div class="op-gallery">
+          <figure class="op-shot"><img src="assets/other-projects/packaging-illustration/01.webp" alt="包装插画设计作品图 01" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/packaging-illustration/02.webp" alt="包装插画设计作品图 02" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/packaging-illustration/03.webp" alt="包装插画设计作品图 03" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/packaging-illustration/04.webp" alt="包装插画设计作品图 04" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/packaging-illustration/05.webp" alt="包装插画设计作品图 05" loading="lazy" /></figure>
+          <figure class="op-shot"><img src="assets/other-projects/packaging-illustration/06.webp" alt="包装插画设计作品图 06" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-footer">
+      <div class="op-wrap">
+        <h2>More visual experiments, kept clean and scrollable.</h2>
+        <div class="op-footer-actions">
+          <a class="op-back" href="index.html?target=projects#projects">返回精选项目</a>
+          <a class="op-top-link" href="#top">回到顶部</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const page = document.querySelector('.op-page');
+      requestAnimationFrame(() => {
+        page?.classList.add('is-ready');
+      });
+
+      const shots = Array.from(document.querySelectorAll('.op-shot'));
+      if (shots.length) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle('is-visible', entry.isIntersecting);
+          });
+        }, { rootMargin: '-8% 0px -12% 0px', threshold: 0.12 });
+
+        shots.forEach((shot) => observer.observe(shot));
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const target = document.querySelector(link.getAttribute('href'));
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', link.getAttribute('href'));
+        });
+      });
+    })();
+</script>
+</body>
+</html>
