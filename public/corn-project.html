@@ -1283,13 +1283,18 @@ body.gy-lightbox-open {
   }
 
   .ctw-output-stack .ctw-output-card,
+  .ctw-output-stack .ctw-output-card:nth-child(n),
+  .ctw-stack-card:nth-child(n),
   .ctw-stack-card {
     position: relative;
+    inset: auto;
     left: auto;
     top: auto;
     right: auto;
     bottom: auto;
+    width: 100%;
     transform: none;
+    justify-self: stretch;
   }
 
   .ctw-output-stack,
@@ -1324,10 +1329,16 @@ body.gy-lightbox-open {
     top: 12px;
     min-height: 56px;
     gap: 12px;
+    align-items: flex-start;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .gy-nav span {
+    flex: 1 1 auto;
+    min-width: 0;
     font-size: 12px;
+    line-height: 1.35;
   }
 
   .gy-back,
@@ -1335,6 +1346,14 @@ body.gy-lightbox-open {
     min-height: 40px;
     padding: 0 14px;
     font-size: 13px;
+  }
+
+  .gy-back {
+    flex: 0 0 auto;
+    max-width: 118px;
+    text-align: center;
+    line-height: 1.15;
+    white-space: normal;
   }
 
   .gy-hero {
@@ -1393,6 +1412,18 @@ body.gy-lightbox-open {
     font-size: 15px;
   }
 
+  .ctw-output-copy h3,
+  .ctw-stack-copy h3 {
+    font-size: 2.45rem;
+    line-height: 1.04;
+  }
+
+  .ctw-output-copy p,
+  .ctw-stack-copy p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
   .gy-concept article,
   .gy-process-card,
   .ctw-route-card,
@@ -1415,6 +1446,46 @@ body.gy-lightbox-open {
   .ctw-output-card img,
   .ctw-stack-card img {
     height: auto;
+  }
+
+  .ctw-output-stack .ctw-output-card,
+  .ctw-output-stack .ctw-output-card:nth-child(n),
+  .ctw-stack-card,
+  .ctw-stack-card:nth-child(n) {
+    position: relative;
+    inset: auto;
+    left: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: none;
+    transform: none;
+  }
+
+  .ctw-output-stack .ctw-output-card img,
+  .ctw-output-card.contain img,
+  .ctw-stack-card img {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .ctw-output-card.contain img {
+    object-fit: contain;
+    padding: 12px;
+  }
+
+  .ctw-output-card figcaption,
+  .ctw-stack-card figcaption {
+    position: static;
+    display: block;
+    padding: 12px 14px;
+    border-radius: 0;
+    color: var(--color-bg);
+    background: rgba(var(--color-text-primary-rgb), 0.96);
+    backdrop-filter: none;
   }
 
   .gy-footer-actions {

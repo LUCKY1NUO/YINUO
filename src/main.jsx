@@ -24,7 +24,7 @@ import './styles.css';
 const contacts = {
   phone: '13785442216',
   email: '15128932216@163.com',
-  location: '河北承德 / 澳门',
+  location: '河北承德',
 };
 
 const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
@@ -1071,7 +1071,7 @@ function FeaturedProjects() {
             <h2>精选项目</h2>
           </div>
           <p>
-            首版先以简历中的经历搭建项目叙事和视觉节奏。作品图片当前为可替换占位图，后续可按真实项目截图继续强化。
+            作品包含文创、品牌、AIGC 等设计项目，其中澳门岭南文化传统信俗 City Temple Walk 为已落地项目。
           </p>
         </div>
 
