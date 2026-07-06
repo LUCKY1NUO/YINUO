@@ -232,8 +232,8 @@ a {
 .gy-heading {
   margin-bottom: 52px;
   display: grid;
-  grid-template-columns: minmax(0, 0.72fr) minmax(420px, 0.48fr);
-  gap: 64px;
+  grid-template-columns: minmax(0, 1fr) minmax(440px, 0.44fr);
+  gap: 48px;
   align-items: end;
 }
 
@@ -251,11 +251,11 @@ a {
 
 .gy-heading p {
   margin: 0;
-  max-width: 560px;
+  width: min(100%, 470px);
   justify-self: end;
   color: rgba(var(--color-bg-rgb), 0.72);
-  font-size: 16px;
-  line-height: 1.68;
+  font-size: 14px;
+  line-height: 1.72;
   text-align: right;
 }
 
@@ -1412,6 +1412,7 @@ body.gy-lightbox-open {
   }
 
   .gy-heading p {
+    width: 100%;
     font-size: 15px;
     text-align: left;
     justify-self: start;
