@@ -1167,7 +1167,10 @@ body.target-cursor-active .target-cursor-wrapper {
 .project-more-row {
   margin-top: 28px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: flex-end;
+  gap: 12px;
 }
 
 .other-projects-cta {
@@ -2341,6 +2344,7 @@ body.target-cursor-active .target-cursor-wrapper {
 
   .project-more-row {
     justify-content: stretch;
+    align-items: stretch;
   }
 
   .other-projects-cta {

@@ -430,6 +430,7 @@ function MotionSystem() {
           '.contact-lines > *',
           '.metric',
           '.project-glow-card',
+          '.project-more-row > *',
           '.strength-glow-card',
           '.contact-blocks > *',
         ].join(','));
@@ -1123,6 +1124,10 @@ function FeaturedProjects() {
         <div className="project-more-row">
           <a className="other-projects-cta cursor-target" href={asset('other-projects.html')}>
             其他项目
+            <ChevronRight size={20} />
+          </a>
+          <a className="other-projects-cta render-projects-cta cursor-target" href={asset('render-project.html')}>
+            渲染项目
             <ChevronRight size={20} />
           </a>
         </div>
